@@ -48,8 +48,40 @@ Vagrant.configure("2") do |config|
 			salt.minion_pub		= "salt/keys/salt.pub"
 			salt.seed_master	= {
 				"salt"		=> "salt/keys/salt.pub",
+				"ubuntu"	=> "salt/keys/ubuntu.pub",
 			}
 
 		end
+	end
+
+	config.vm.define "ubuntu", autostart: false do |ubuntu|
+		## Choose your base box
+		ubuntu.vm.box		= "ubuntu/bionic64"
+		ubuntu.vm.hostname	= "ubuntu"
+
+		## Deactivate vagrant-vbguest plugin function to
+		# update guest utils in image
+		ubuntu.vbguest.auto_update	= false
+
+		ubuntu.vm.network "private_network", ip: "192.168.2.12", virtualbox__intnet: true
+
+		## Use all the defaults:
+		ubuntu.vm.provision :salt do |ubuntu|
+			ubuntu.install_master	= true
+			ubuntu.no_minion	= false
+			ubuntu.install_type	= "stable"
+			ubuntu.verbose		= true
+			ubuntu.colorize		= true
+			ubuntu.run_highstate	= false
+
+			ubuntu.minion_config	= "salt/minion_ubuntu"
+			ubuntu.minion_id	= "ubuntu"
+
+			ubuntu.minion_key	= "salt/keys/ubuntu.pem"
+			ubuntu.minion_pub	= "salt/keys/ubuntu.pub"
+		end
+
+		#config.vm.network :forwarded_port, id: 'ssh', guest: 22, host: 2222, disabled: true
+		#config.ssh.guest_port = 2222
 	end
 end
