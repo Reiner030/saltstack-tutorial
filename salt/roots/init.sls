@@ -5,7 +5,7 @@ hello-world:
 
 /home/vagrant/another-file.txt:
   file.managed:
-    - name: /home/vagrant/hello-world.txt
+    - name: /home/vagrant/another-file.txt
     - contents: 'Hello World in another file'
 
 /home/vagrant/file-by-id.txt:
