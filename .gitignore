@@ -1,2 +1,3 @@
 .vagrant
-salt/roots/win/*
+salt/roots/win/repo/*
+salt/roots/win/repo-ng/*
