@@ -2,6 +2,9 @@ base:
   '*':
     - init
 
+  'ubuntu':
+    - ethercalc
+
   'salt':
     - saltmaster
 

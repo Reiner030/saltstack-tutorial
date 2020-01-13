@@ -65,6 +65,7 @@ Vagrant.configure("2") do |config|
 		ubuntu.vbguest.auto_update	= false
 
 		ubuntu.vm.network "private_network", ip: "192.168.2.12", virtualbox__intnet: true
+		ubuntu.vm.network :forwarded_port, id: 'http', guest: 8000, host: 8000
 
 		## Use all the defaults:
 		ubuntu.vm.provision :salt do |ubuntu|
