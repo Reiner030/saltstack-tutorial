@@ -6,7 +6,7 @@
 
 Vagrant.configure("2") do |config|
 	## Choose your base box
-	config.vm.box = "ubuntu/bionic64"
+	config.vm.box = "hashicorp/bionic64"
 
 	## Deactivate vagrant-vbguest plugin function to
 	# update guest utils in image
