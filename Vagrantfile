@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
 
 	config.vm.define "salt", primary: true do |salt|
 		## Choose your base box
-		salt.vm.box		= "ubuntu/bionic64"
+		salt.vm.box		= "hashicorp/bionic64"
 		salt.vm.hostname	= "salt"
 
 		## Deactivate vagrant-vbguest plugin function to
